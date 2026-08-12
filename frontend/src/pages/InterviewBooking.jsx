@@ -61,7 +61,6 @@ export default function InterviewBooking() {
 
   return (
     <div style={{ maxWidth: 640 }}>
-      <div className="eyebrow">Module D · Interview scheduling</div>
       <h1>Interview</h1>
 
       {error && <div className="alert alert-error">{error}</div>}
