@@ -16,12 +16,12 @@ induction-portal/
 
 | Module | Feature | Status |
 |---|---|---|
-| A — Application Form | Public form, validation, confirmation email/page | ✅ Basic |
-| B — Admin Dashboard | Filterable inductee list, individual view, **CSV export** | ✅ Basic + Brownie |
-| C — Domain Access & Boards | Domain assignment gating, tasks, Q&A | ✅ Basic |
-| D — Interview Scheduling | Slot creation, booking with conflict checks, reminder emails | ✅ Basic |
-| E — Interview Status Tracking | Status (Scheduled/Completed/No-show), admin-only, **notes/rating** | ✅ Basic + Brownie |
-| F — Round Progression & Announcements | Advance/reject, bulk final announcement, notification emails | ✅ Basic |
+| A — Application Form | Public form, validation, confirmation email/page 
+| B — Admin Dashboard | Filterable inductee list, individual view, **CSV export** 
+| C — Domain Access & Boards | Domain assignment gating, tasks, Q&A |  Basic |
+| D — Interview Scheduling | Slot creation, booking with conflict checks, reminder emails 
+| E — Interview Status Tracking | Status (Scheduled/Completed/No-show), admin-only, 
+| F — Round Progression & Announcements | Advance/reject, bulk final announcement, notification emails 
 
 (Per the brief, most brownie/optional items were intentionally skipped —
 conditional follow-up questions, panelist-level conflict detection across
