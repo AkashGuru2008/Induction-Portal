@@ -44,7 +44,6 @@ export default function App() {
           </Routes>
         </div>
       </main>
-      <div className="footer-note">INDUCTION PORTAL · MODULES A–F</div>
     </div>
   );
 }
