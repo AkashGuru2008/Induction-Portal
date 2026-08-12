@@ -46,7 +46,6 @@ export default function DomainPage() {
 
   return (
     <div>
-      <div className="eyebrow">Module C · Domain board</div>
       <h1>{domain}</h1>
 
       <div className="split">
