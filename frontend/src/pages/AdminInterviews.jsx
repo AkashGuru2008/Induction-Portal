@@ -72,7 +72,6 @@ export default function AdminInterviews() {
 
   return (
     <div>
-      <div className="eyebrow">Modules D & E · Interview scheduling & status</div>
       <h1>Interviews</h1>
 
       {message && <div className="alert alert-success">{message}</div>}
