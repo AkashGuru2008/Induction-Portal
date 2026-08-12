@@ -52,7 +52,6 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <div className="eyebrow">Module B · Admin dashboard</div>
       <div className="spread">
         <h1>Inductees</h1>
         <button className="btn" onClick={exportCsv}>Export CSV</button>
