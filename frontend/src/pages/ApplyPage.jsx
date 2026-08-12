@@ -49,7 +49,6 @@ export default function ApplyPage() {
 
   return (
     <div style={{ maxWidth: 560 }}>
-      <div className="eyebrow">Module A · Application</div>
       <h1>Apply for Induction</h1>
       <p>Fill in your details and pick exactly two domain preferences, ranked.</p>
 
