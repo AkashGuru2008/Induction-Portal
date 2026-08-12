@@ -14,11 +14,11 @@ induction-portal/
 
 ## What's implemented
 
-| Module | Feature | Status |
+| Module | Feature 
 |---|---|---|
 | A — Application Form | Public form, validation, confirmation email/page 
 | B — Admin Dashboard | Filterable inductee list, individual view, **CSV export** 
-| C — Domain Access & Boards | Domain assignment gating, tasks, Q&A |  Basic |
+| C — Domain Access & Boards | Domain assignment gating, tasks, Q&A 
 | D — Interview Scheduling | Slot creation, booking with conflict checks, reminder emails 
 | E — Interview Status Tracking | Status (Scheduled/Completed/No-show), admin-only, 
 | F — Round Progression & Announcements | Advance/reject, bulk final announcement, notification emails 
