@@ -15,7 +15,7 @@ induction-portal/
 ## What's implemented
 
 | Module | Feature 
-|---|---|---|
+|---|---
 | A — Application Form | Public form, validation, confirmation email/page 
 | B — Admin Dashboard | Filterable inductee list, individual view, **CSV export** 
 | C — Domain Access & Boards | Domain assignment gating, tasks, Q&A 
