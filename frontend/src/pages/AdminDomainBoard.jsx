@@ -53,7 +53,6 @@ export default function AdminDomainBoard() {
   return (
     <div>
       <Link to="/admin/dashboard" className="field-hint">← Back to dashboard</Link>
-      <div className="eyebrow" style={{ marginTop: 16 }}>Module C · Domain board (admin)</div>
       <h1>{domain}</h1>
 
       {error && <div className="alert alert-error">{error}</div>}
