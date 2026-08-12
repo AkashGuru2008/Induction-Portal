@@ -23,9 +23,6 @@ induction-portal/
 | E — Interview Status Tracking | Status (Scheduled/Completed/No-show), admin-only, 
 | F — Round Progression & Announcements | Advance/reject, bulk final announcement, notification emails 
 
-(Per the brief, most brownie/optional items were intentionally skipped —
-conditional follow-up questions, panelist-level conflict detection across
-domains, and the public toggleable results page are not implemented.)
 
 ## Quick start
 
