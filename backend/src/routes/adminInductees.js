@@ -9,8 +9,7 @@ router.use(verifyToken, requireRole('admin'));
 
 const VALID_DOMAINS = ['DevOps', 'Corporate Communications', 'Creatives'];
 
-// GET /api/admin/inductees?domain=&prefRank=1|2&status=&round=
-// Module B - Basic: filterable list by domain and preference rank
+
 router.get('/', async (req, res) => {
   const { domain, prefRank, status, round } = req.query;
   const conditions = [];
@@ -50,8 +49,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/admin/inductees/export/csv?domain=&prefRank=&status=&round=
-// Module B - Brownie: export filtered list as CSV
+
 router.get('/export/csv', async (req, res) => {
   const { domain, prefRank, status, round } = req.query;
   const conditions = [];
@@ -90,7 +88,7 @@ router.get('/export/csv', async (req, res) => {
   }
 });
 
-// GET /api/admin/inductees/:id — full individual application (Module B - Basic)
+
 router.get('/:id', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM inductees WHERE id = $1', [req.params.id]);
@@ -102,7 +100,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PATCH /api/admin/inductees/:id/assign-domain — Module C - Basic
+
 router.patch('/:id/assign-domain', async (req, res) => {
   const { domain } = req.body;
   if (!domain || !VALID_DOMAINS.includes(domain)) {
