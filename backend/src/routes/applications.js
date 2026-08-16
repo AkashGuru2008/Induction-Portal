@@ -6,11 +6,9 @@ const router = express.Router();
 
 const VALID_DOMAINS = ['DevOps', 'Corporate Communications', 'Creatives'];
 
-// POST /api/applications — public submission (Module A - Basic)
 router.post('/', async (req, res) => {
   const { name, rollNumber, email, phone, pref1, pref2 } = req.body;
 
-  // Basic validation
   const errors = [];
   if (!name || !name.trim()) errors.push('Name is required.');
   if (!rollNumber || !rollNumber.trim()) errors.push('Roll number is required.');
@@ -37,7 +35,6 @@ router.post('/', async (req, res) => {
     );
     const inductee = result.rows[0];
 
-    // Confirmation email (Module A - Basic)
     await sendEmail({
       to: inductee.email,
       subject: 'Induction Application Received',
