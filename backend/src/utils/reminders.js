@@ -1,9 +1,7 @@
 const pool = require('../config/db');
 const { sendEmail } = require('./email');
 
-// Sends a reminder email for any Scheduled interview starting within the next
-// 24 hours that hasn't already had a reminder sent. Intended to be run on an
-// interval (see server.js) so reminders go out automatically ahead of time.
+
 async function sendUpcomingReminders() {
   try {
     const result = await pool.query(
@@ -27,7 +25,7 @@ async function sendUpcomingReminders() {
     }
 
     if (result.rows.length) {
-      console.log(`📨 Sent ${result.rows.length} interview reminder(s).`);
+      console.log(` Sent ${result.rows.length} interview reminder(s).`);
     }
   } catch (err) {
     console.error('Reminder job failed:', err.message);
