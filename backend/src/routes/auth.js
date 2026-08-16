@@ -11,7 +11,6 @@ function signToken(payload) {
   });
 }
 
-// POST /api/auth/admin-login
 router.post('/admin-login', async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -34,8 +33,6 @@ router.post('/admin-login', async (req, res) => {
   }
 });
 
-// POST /api/auth/inductee-login
-// Inductees authenticate with roll number + the email or phone they applied with.
 router.post('/inductee-login', async (req, res) => {
   const { rollNumber, contact } = req.body;
   if (!rollNumber || !contact) {
