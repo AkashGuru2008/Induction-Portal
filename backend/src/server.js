@@ -24,10 +24,9 @@ app.use('/api/domain', domainRoutes);
 app.use('/api/interviews', interviewRoutes);
 app.use('/api/rounds', roundRoutes);
 
-// 404 handler
+
 app.use((req, res) => res.status(404).json({ error: 'Not found.' }));
 
-// Generic error handler
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Unexpected server error.' });
@@ -35,7 +34,7 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Induction Portal API running on port ${PORT}`);
+  console.log(` Induction Portal API running on port ${PORT}`);
 
   // Check for interview reminders periodically (Module D - Basic).
   sendUpcomingReminders();
