@@ -11,7 +11,6 @@ async function getInducteeDomain(inducteeId) {
   return result.rows[0] ? result.rows[0].assigned_domain : null;
 }
 
-// Middleware: inductee must be assigned to the :domain in the URL (Module C - Basic access control)
 async function requireOwnDomain(req, res, next) {
   const { domain } = req.params;
   if (!VALID_DOMAINS.includes(domain)) return res.status(400).json({ error: 'Invalid domain.' });
@@ -26,9 +25,6 @@ async function requireOwnDomain(req, res, next) {
 
 router.use(verifyToken);
 
-// ---- Tasks ----
-
-// GET /api/domain/:domain/tasks — inductee (own domain) or admin
 router.get('/:domain/tasks', requireOwnDomain, async (req, res) => {
   try {
     const result = await pool.query(
@@ -42,7 +38,6 @@ router.get('/:domain/tasks', requireOwnDomain, async (req, res) => {
   }
 });
 
-// POST /api/domain/:domain/tasks — admin only (Module C - Basic)
 router.post('/:domain/tasks', requireRole('admin'), async (req, res) => {
   const { domain } = req.params;
   const { title, description, deadline } = req.body;
@@ -61,9 +56,6 @@ router.post('/:domain/tasks', requireRole('admin'), async (req, res) => {
   }
 });
 
-// ---- Q&A ----
-
-// GET /api/domain/:domain/qna — inductee (own domain, sees all Q&A on that domain) or admin
 router.get('/:domain/qna', requireOwnDomain, async (req, res) => {
   try {
     const result = await pool.query(
@@ -79,7 +71,6 @@ router.get('/:domain/qna', requireOwnDomain, async (req, res) => {
   }
 });
 
-// POST /api/domain/:domain/qna — inductee posts a question on their own domain (Module C - Basic)
 router.post('/:domain/qna', requireOwnDomain, requireRole('inductee'), async (req, res) => {
   const { question } = req.body;
   if (!question || !question.trim()) return res.status(400).json({ error: 'Question text is required.' });
@@ -96,7 +87,6 @@ router.post('/:domain/qna', requireOwnDomain, requireRole('inductee'), async (re
   }
 });
 
-// POST /api/domain/:domain/qna/:qnaId/answer — admin responds (Module C - Basic)
 router.post('/:domain/qna/:qnaId/answer', requireRole('admin'), async (req, res) => {
   const { answer } = req.body;
   if (!answer || !answer.trim()) return res.status(400).json({ error: 'Answer text is required.' });
