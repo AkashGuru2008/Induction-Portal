@@ -10,9 +10,6 @@ const VALID_STATUSES = ['Scheduled', 'Completed', 'No-show'];
 
 router.use(verifyToken);
 
-// ---- Slots ----
-
-// POST /api/interviews/slots — admin defines available slots (Module D - Basic)
 router.post('/slots', requireRole('admin'), async (req, res) => {
   const { domain, panelist, startTime, endTime } = req.body;
   if (!VALID_DOMAINS.includes(domain)) return res.status(400).json({ error: 'Invalid domain.' });
@@ -31,7 +28,6 @@ router.post('/slots', requireRole('admin'), async (req, res) => {
   }
 });
 
-// GET /api/interviews/slots?domain=&onlyAvailable=true — list slots
 router.get('/slots', async (req, res) => {
   const { domain, onlyAvailable } = req.query;
   const conditions = [];
@@ -62,10 +58,6 @@ router.get('/slots', async (req, res) => {
   }
 });
 
-// ---- Bookings ----
-
-// POST /api/interviews/book — inductee books a slot (Module D - Basic)
-// Conflict check: the slot must be free AND the inductee must not already have a booking.
 router.post('/book', requireRole('inductee'), async (req, res) => {
   const { slotId } = req.body;
   if (!slotId) return res.status(400).json({ error: 'slotId is required.' });
@@ -124,7 +116,6 @@ router.post('/book', requireRole('inductee'), async (req, res) => {
   }
 });
 
-// GET /api/interviews/my-booking — inductee's own booking
 router.get('/my-booking', requireRole('inductee'), async (req, res) => {
   try {
     const result = await pool.query(
@@ -140,7 +131,6 @@ router.get('/my-booking', requireRole('inductee'), async (req, res) => {
   }
 });
 
-// DELETE /api/interviews/my-booking — inductee cancels their own booking (frees the slot)
 router.delete('/my-booking', requireRole('inductee'), async (req, res) => {
   try {
     await pool.query('DELETE FROM interview_bookings WHERE inductee_id = $1', [req.user.id]);
@@ -151,9 +141,6 @@ router.delete('/my-booking', requireRole('inductee'), async (req, res) => {
   }
 });
 
-// ---- Admin: bookings + status tracking (Module E) ----
-
-// GET /api/interviews/admin/bookings?domain= — admin-only, includes status (Module E - Basic: visible to admin only)
 router.get('/admin/bookings', requireRole('admin'), async (req, res) => {
   const { domain } = req.query;
   const params = [];
@@ -181,7 +168,6 @@ router.get('/admin/bookings', requireRole('admin'), async (req, res) => {
   }
 });
 
-// PATCH /api/interviews/admin/bookings/:id — set status / notes / rating (Module E - Basic + Brownie)
 router.patch('/admin/bookings/:id', requireRole('admin'), async (req, res) => {
   const { status, notes, rating } = req.body;
   if (status && !VALID_STATUSES.includes(status)) {
