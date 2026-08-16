@@ -45,8 +45,4 @@ domain assignment notices, interview reminders, round results) are logged
 to the console instead of actually sent — handy for local development.
 Fill in `SMTP_*` vars to send real email.
 
-## Notes on scope
 
-This implements the **basic** requirements of every module (A–F), plus two
-low-cost extras: CSV export of the filtered inductee list, and an
-interviewer notes/rating field on bookings (admin-only).
