@@ -6,11 +6,9 @@ function getTransporter() {
   if (transporter) return transporter;
 
   if (!process.env.SMTP_HOST) {
-    // No SMTP configured — fall back to logging emails to the console.
-    // This keeps the app fully runnable in dev without real credentials.
     transporter = {
       sendMail: async (opts) => {
-        console.log('\n----- 📧 [DEV EMAIL - not actually sent] -----');
+        console.log('\n-----  [DEV EMAIL - not actually sent] -----');
         console.log('To:', opts.to);
         console.log('Subject:', opts.subject);
         console.log('Body:\n', opts.text || opts.html);
