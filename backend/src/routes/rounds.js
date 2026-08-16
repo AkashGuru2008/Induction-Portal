@@ -6,10 +6,6 @@ const { sendEmail } = require('../utils/email');
 const router = express.Router();
 router.use(verifyToken, requireRole('admin'));
 
-// POST /api/rounds/advance
-// body: { advanceIds: [...], rejectIds: [...] }
-// Advances selected inductees to round + 1 with status 'advanced', rejects the rest.
-// Module F - Basic: admin selects who moves on; notified via email.
 router.post('/advance', async (req, res) => {
   const { advanceIds = [], rejectIds = [] } = req.body;
   if (!advanceIds.length && !rejectIds.length) {
@@ -41,7 +37,6 @@ router.post('/advance', async (req, res) => {
 
     await client.query('COMMIT');
 
-    // Fire-and-forget notification emails
     for (const inductee of advanced) {
       sendEmail({
         to: inductee.email,
@@ -67,9 +62,6 @@ router.post('/advance', async (req, res) => {
   }
 });
 
-// POST /api/rounds/announce-final
-// body: { selectedIds: [...], rejectedIds: [...] }
-// Final round bulk status update + announcement email (Module F - Basic).
 router.post('/announce-final', async (req, res) => {
   const { selectedIds = [], rejectedIds = [] } = req.body;
   if (!selectedIds.length && !rejectedIds.length) {
