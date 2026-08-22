@@ -36,7 +36,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(` Induction Portal API running on port ${PORT}`);
 
-  // Check for interview reminders periodically (Module D - Basic).
   sendUpcomingReminders();
-  setInterval(sendUpcomingReminders, 15 * 60 * 1000); // every 15 minutes
+  setInterval(sendUpcomingReminders, 15 * 60 * 1000); 
 });
